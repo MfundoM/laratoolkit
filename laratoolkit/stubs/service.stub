@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Services;
+
+use App\Models\{{ model }};
+
+class {{ model }}Service
+{
+    public function getAll{{ plural }}(int $perPage = 10)
+    {
+        return {{ model }}::orderBy('id', 'DESC')->paginate($perPage);
+    }
+
+    public function find{{ model }}($slug)
+    {
+        return {{ model }}::where('slug', $slug)->findOrFail();
+    }
+
+    public function create{{ model }}(array $data)
+    {
+        return {{ model }}::create($data);
+    }
+
+    public function update{{ model }}(array $data, {{ model }} ${{ lower }})
+    {
+        return ${{ lower }}->update($data);
+    }
+
+    public function delete{{ model }}({{ model }} ${{ lower }})
+    {
+        return ${{ lower }}->delete();
+    }
+}

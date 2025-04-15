@@ -1,0 +1,32 @@
+{
+    "name": "mfundom/laratoolkit",
+    "description": "Laravel Dev Toolkit",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Laratoolkit\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.1"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Laratoolkit\\LaratoolkitServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload-dev": {
+        "psr-4": {
+            "Laratoolkit\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5",
+        "orchestra/testbench": "^10.2"
+    }
+}

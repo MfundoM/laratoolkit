@@ -1,0 +1,62 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\{{ model }};
+use App\Services\{{ model }}Service;
+
+class {{ model }}Controller extends Controller
+{
+    protected $service;
+
+    public function __construct({{ model }}Service $service)
+    {
+        $this->service = $service;
+    }
+
+    public function index()
+    {
+        $items = $this->service->getAll{{ plural }}();
+
+        return view('{{ lowerPlural }}.index', compact('items'));
+    }
+
+    public function create()
+    {
+        return view('{{ lowerPlural }}.create');
+    }
+
+    public function store({{ model }}Request $request)
+    {
+        $this->service->create{{ model }}($request->validated());
+
+        return redirect()->route('{{ lowerPlural }}.index');
+    }
+
+    public function show($slug)
+    {
+        $item = $this->service->find{{ model }}($slug);
+
+        return view('{{ lowerPlural }}.show', compact('item'));
+    }
+
+    public function edit({{ model }} ${{ lower }})
+    {
+        return view('{{ lowerPlural }}.edit', compact('{{ lower }}'));
+    }
+
+    public function update({{ model }}Request $request, {{ model }} ${{ lower }})
+    {
+        $this->service->update{{ model }}($request->validated(), ${{ lower }});
+
+        return redirect()->route('{{ lowerPlural }}.index');
+    }
+
+    public function destroy({{ model }} ${{ lower }})
+    {
+        $this->service->delete{{ model }}(${{ lower }});
+
+        return redirect()->route('{{ lowerPlural }}.index');
+    }
+}
