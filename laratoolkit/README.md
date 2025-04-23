@@ -12,7 +12,3 @@ Laratoolkit is a Laravel package designed to speed up your development workflow 
 - Auto-appends routes in `web.php`.
 
 ---
-
-## 📦 Installation
-
-1. composer require your-vendor/laratoolkit --dev
